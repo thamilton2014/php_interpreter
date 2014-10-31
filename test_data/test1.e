@@ -1,5 +1,5 @@
 feature a is
 do
-    x := 1
+    x := 3
     print ( x )
 end

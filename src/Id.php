@@ -14,7 +14,7 @@ class Id implements Expression
 
     function __construct($value)
     {
-        $this->value = $value;
+        $this->value = strtolower($value);
     }
 
     function evaluate()

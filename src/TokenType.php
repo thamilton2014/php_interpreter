@@ -19,4 +19,20 @@ abstract class TokenType {
     const LPARAN_TOK = 'LPARAN_TOK';
     const END_TOK = 'END_TOK';
     const EOS_TOK = 'EOS_TOK';
+    const IF_TOK = 'IF_TOK';
+    const THEN_TOK = 'THEN_TOK';
+    const ELSE_TOK = 'ELSE_TOK';
+    const GT_TOK = 'GT_TOK';
+    const LT_TOK = 'LT_TOK';
+    const LE_TOK = 'LE_TOK';
+    const GE_TOK = 'GE_TOK';
+    const NE_TOK = 'NE_TOK';
+    const EQ_TOK = 'EQ_TOK';
+    const FROM_TOK = 'FROM_TOK';
+    const UNTIL_TOK = 'UNTIL_TOK';
+    const LOOP_TOK = 'LOOP_TOK';
+    const ADD_TOK = 'ADD_TOK';
+    const SUB_TOK = 'SUB_TOK';
+    const MUL_TOK = 'MUL_TOK';
+    const DIV_TOK = 'DIV_TOK';
 } 

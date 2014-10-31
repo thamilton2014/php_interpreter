@@ -10,12 +10,11 @@ class Interpreter
 {
     function main()
     {
-        $parser = new Parser("/Users/thamilton/PhpstormProjects/Example_Project/test_data/test1.e");
+        $parser = new Parser("/Users/thamilton/PhpstormProjects/Example_Project/test_data/test4.e");
         $feature = $parser->feature();
         $feature->execute();
 
-//        $memory = new Memory();
-//        Memory::display_memory();
+        Memory::display_memory();
     }
 }
 

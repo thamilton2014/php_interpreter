@@ -24,9 +24,9 @@ class Assignment implements Statement{
 
     function execute()
     {
-        var_dump($this->expression->evaluate());
         $memory = new Memory();
-        $memory->store($this->id, $this->expression->evaluate());
+        $input_2 = $this->expression;
+        $memory->store($this->id, $input_2->evaluate());
     }
 
 } 

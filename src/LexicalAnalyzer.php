@@ -21,16 +21,15 @@ class LexicalAnalyzer {
             $object = new Token($row_num + 1, $col_num + 1, $value, $token_type);
             $this->token_list[] = $object;
         };
-//        var_dump($this->token_list);
-//        $object = new Token(-1 , -1, "EOS_TOK", TokenType::EOS_TOK);
-//        $token_list[] = $object;
+        $object = new Token(-1 , -1, "EOS_TOK", TokenType::EOS_TOK);
+        $token_list[] = $object;
     }
 
     private function get_token_type($current_line, $column_num, $word)
     {
         if($word === "feature")
             $token_type = TokenType::FEATURE_TOK;
-        elseif($word === "a")
+        elseif (ctype_alpha($word) && strlen($word) == 1)
             $token_type = TokenType::ID_TOK;
         elseif($word === "is")
             $token_type = TokenType::IS_TOK;
@@ -40,7 +39,7 @@ class LexicalAnalyzer {
             $token_type = TokenType::ID_TOK;
         elseif($word === ":=")
             $token_type = TokenType::ASSIGN_TOK;
-        elseif($word === "1")
+        elseif(is_numeric($word))
             $token_type = TokenType::CONST_TOK;
         elseif($word === "print")
             $token_type = TokenType::PRINT_TOK;
@@ -50,6 +49,38 @@ class LexicalAnalyzer {
             $token_type = TokenType::LPARAN_TOK;
         elseif($word === "end")
             $token_type = TokenType::END_TOK;
+        elseif($word == "if")
+            $token_type = TokenType::IF_TOK;
+        elseif($word == "else")
+            $token_type = TokenType::ELSE_TOK;
+        elseif($word == "then")
+            $token_type = TokenType::THEN_TOK;
+        elseif($word == ">")
+            $token_type = TokenType::GT_TOK;
+        elseif($word == ">=")
+            $token_type = TokenType::GE_TOK;
+        elseif($word == "<")
+            $token_type = TokenType::LT_TOK;
+        elseif($word == "<=")
+            $token_type = TokenType::LE_TOK;
+        elseif($word == "/=")
+            $token_type = TokenType::NE_TOK;
+        elseif($word == "==")
+            $token_type = TokenType::EQ_TOK;
+        elseif($word == "from")
+            $token_type = TokenType::FROM_TOK;
+        elseif($word == "until")
+            $token_type = TokenType::UNTIL_TOK;
+        elseif($word == "loop")
+            $token_type = TokenType::LOOP_TOK;
+        elseif($word == "+")
+            $token_type = TokenType::ADD_TOK;
+        elseif($word == "-")
+            $token_type = TokenType::SUB_TOK;
+        elseif($word == "/")
+            $token_type = TokenType::DIV_TOK;
+        elseif($word == "*")
+            $token_type = TokenType::MUL_TOK;
         else
             throw new LexicalException("invalid lexeme at row $current_line and column $column_num : $word");
         return $token_type;

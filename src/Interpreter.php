@@ -1,5 +1,6 @@
 <?php
 require 'Parser.php';
+
 /**
  * Created by PhpStorm.
  * User: thamilton

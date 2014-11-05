@@ -42,7 +42,7 @@ class Parser
         $this->match($token, TokenType::DO_TOK);
         $compound = $this->get_compound();
         $token = $this->get_next_token();
-        if($token->token_type != TokenType::END_TOK)
+        if ($token->token_type != TokenType::END_TOK)
             throw new ParserException("garbage at end of program");
         return new Feature($compound);
     }
@@ -53,8 +53,7 @@ class Parser
         $compound = new Compound();
         $compound->add($statement);
         $token = $this->get_look_ahead_token();
-        while($this->is_valid_start($token))
-        {
+        while ($this->is_valid_start($token)) {
             $statement = $this->get_statement();
             $compound->add($statement);
             $token = $this->get_look_ahead_token();
@@ -64,16 +63,16 @@ class Parser
 
     function is_valid_start($token)
     {
-        if($token == NULL)
+        if ($token == NULL)
             throw new ParserException("token is null");
         return $token->token_type == TokenType::ID_TOK || $token->token_type == TokenType::PRINT_TOK
-            || $token->token_type == TokenType::IF_TOK || $token->token_type == TokenType::FROM_TOK;
+        || $token->token_type == TokenType::IF_TOK || $token->token_type == TokenType::FROM_TOK;
     }
 
     function get_statement()
     {
         $token = $this->get_look_ahead_token();
-        switch($token->token_type){
+        switch ($token->token_type) {
             case TokenType::ID_TOK:
                 $statement = $this->get_assignment_statement();
                 break;
@@ -155,9 +154,9 @@ class Parser
     function get_expression()
     {
         $token = $this->get_look_ahead_token();
-        if($token->token_type == TokenType::ID_TOK)
+        if ($token->token_type == TokenType::ID_TOK)
             $expression = $this->get_id();
-        elseif($token->token_type == TokenType::CONST_TOK)
+        elseif ($token->token_type == TokenType::CONST_TOK)
             $expression = $this->get_literal_integer();
         else {
             $operator = $this->get_arithmetic_operator();
@@ -179,17 +178,17 @@ class Parser
     function get_relational_operator()
     {
         $token = $this->get_next_token();
-        if($token->token_type == TokenType::GT_TOK)
+        if ($token->token_type == TokenType::GT_TOK)
             $operator = RelationalOperator::GT_OP;
-        elseif($token->token_type == TokenType::GE_TOK)
+        elseif ($token->token_type == TokenType::GE_TOK)
             $operator = RelationalOperator::GE_OP;
-        elseif($token->token_type == TokenType::LT_TOK)
+        elseif ($token->token_type == TokenType::LT_TOK)
             $operator = RelationalOperator::LT_OP;
-        elseif($token->token_type == TokenType::LE_TOK)
+        elseif ($token->token_type == TokenType::LE_TOK)
             $operator = RelationalOperator::LE_OP;
-        elseif($token->token_type == TokenType::NE_TOK)
+        elseif ($token->token_type == TokenType::NE_TOK)
             $operator = RelationalOperator::NE_OP;
-        elseif($token->token_type == TokenType::EQ_TOK)
+        elseif ($token->token_type == TokenType::EQ_TOK)
             $operator = RelationalOperator::EQ_OP;
         else
             throw new ParserException("relation operator expected : $token->get_lexeme");
@@ -206,7 +205,7 @@ class Parser
     function get_arithmetic_operator()
     {
         $token = $this->get_next_token();
-        switch($token->token_type){
+        switch ($token->token_type) {
             case TokenType::ADD_TOK:
                 $operator = ArithmeticOperator::ADD_OP;
                 break;
@@ -227,8 +226,8 @@ class Parser
 
     function match($token, $token_type)
     {
-        if($token->token_type != $token_type)
-            throw new ParserException("$token_type expected at $token->row_num and $token->col_num: $token->value");
+        if ($token->token_type != $token_type)
+            throw new ParserException("$token_type expected at $token->row_num : $token->value");
     }
 
     function get_next_token()

@@ -7,16 +7,17 @@
  */
 require 'Statement.php';
 require 'Memory.php';
-class Assignment implements Statement{
 
+class Assignment implements Statement
+{
     private $id;
     private $expression;
 
     function __construct($id, $expression)
     {
-        if($id == NULL)
+        if ($id == NULL)
             throw new InvalidArgumentException("[Assignment] null Id argument");
-        if($expression == NULL)
+        if ($expression == NULL)
             throw new InvalidArgumentException("[Assignment] null Expression argument");
         $this->id = $id;
         $this->expression = $expression;
@@ -28,5 +29,4 @@ class Assignment implements Statement{
         $input_2 = $this->expression;
         $memory->store($this->id, $input_2->evaluate());
     }
-
 } 

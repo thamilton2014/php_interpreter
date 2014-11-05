@@ -9,7 +9,6 @@ require 'Expression.php';
 
 class Id implements Expression
 {
-
     private $value;
 
     function __construct($value)

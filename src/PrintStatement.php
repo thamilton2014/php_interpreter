@@ -19,7 +19,6 @@ class PrintStatement implements Statement{
 
     function execute()
     {
-        // TODO: Implement execute() method.
         echo "[Print Statement] " . $this->expression->evaluate() . "\n";
     }
 }

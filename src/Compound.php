@@ -1,13 +1,13 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: thamilton
  * Date: 10/29/14
  * Time: 3:49 PM
  */
-
-class Compound {
-
+class Compound
+{
     private $statements;
 
     function __construct()
@@ -17,15 +17,14 @@ class Compound {
 
     function add($statement)
     {
-        if($statement == NULL)
+        if ($statement == NULL)
             throw new InvalidArgumentException("[Compound] null statement argument");
         $this->statements[] = $statement;
     }
 
     function execute()
     {
-        foreach($this->statements as $input)
+        foreach ($this->statements as $input)
             $input->execute();
     }
-
 } 

@@ -1,13 +1,13 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: thamilton
  * Date: 10/28/14
  * Time: 8:57 AM
  */
-
-abstract class TokenType {
-
+abstract class TokenType
+{
     const FEATURE_TOK = 'FEATURE_TOK';
     const ID_TOK = 'ID_TOK';
     const IS_TOK = 'IS_TOK';
@@ -35,4 +35,5 @@ abstract class TokenType {
     const SUB_TOK = 'SUB_TOK';
     const MUL_TOK = 'MUL_TOK';
     const DIV_TOK = 'DIV_TOK';
+
 } 
